@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "name": "Waffle3",
+      "price": "15",
+      "id": 4
+    },
+    {
+      "name": "Muffin",
+      "price": "83",
+      "id": 5
+    },
+    {
+      "name": "Julio Alberto Salas",
+      "price": "1",
+      "id": 6
+    },
+    {
+      "name": "Front",
+      "price": "36",
+      "id": 17
+    },
+    {
+      "name": "Front",
+      "price": "1",
+      "id": 18
+    },
+    {
+      "name": "Julio Alberto Salas",
+      "price": "43",
+      "id": 19
+    },
+    {
+      "name": "3423",
+      "price": "222",
+      "id": 20
+    },
+    {
+      "name": "Front",
+      "price": "36",
+      "id": 21
+    }
+  ]
+}
