@@ -126,23 +126,22 @@ export const deleteProductAction = product => {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
         }).then(async (result) => {
-            if (result.isConfirmed) {
-                try {
-                    await axiosClient.delete(`/products/${product.id}`)
-                    dispatch(deleteProductSuccess(product))
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                    )
-                } catch (error) {
-                    Swal.fire(
-                        'Ooops!',
-                        'Something went wrong...',
-                        'error'
-                    )
-                }
-
+            if (!result.isConfirmed) return
+            
+            try {
+                await axiosClient.delete(`/products/${product.id}`)
+                dispatch(deleteProductSuccess(product))
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            } catch (error) {
+                Swal.fire(
+                    'Ooops!',
+                    'Something went wrong...',
+                    'error'
+                )
             }
         })
     }

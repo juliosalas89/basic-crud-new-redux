@@ -21,7 +21,7 @@ const Product = ({ product }) => {
         <tr>
             <td>{name}</td>
             <td className='text-center'>$ {price}</td>
-            <td className='acciones'>
+            <td className='actions'>
                 <button
                     onClick={handleEdit}
                     className='btn btn-primary mr-2'>Edit</button>

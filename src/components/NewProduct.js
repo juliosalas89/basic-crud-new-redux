@@ -8,53 +8,40 @@ import { showAlert, hideAlert } from '../redux/alert.slice.js';
 const NewProduct = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [newProduct, setNewProduct] = useState({
-        name: '',
-        price: ''
-    });
+    
+    const [newProduct, setNewProduct] = useState({ name: '', price: '' });
+
     const loading = useSelector(state => state.products.lading);
+    
     const { name, price } = newProduct;
     const productToEdit = useSelector(state => state.products.productToEdit);
     const alert = useSelector(state => state.alert.alert);
     
     useEffect(()=> {
-        if(productToEdit) {
-            setNewProduct({
-                name: productToEdit.name,
-                price: productToEdit.price
-            });
-        } else {
-            setNewProduct({
-                name: '',
-                price: ''
-            });
-        }
+        setNewProduct({
+            name: productToEdit ? productToEdit.name : '',
+            price: productToEdit ? productToEdit.price : ''
+        });
     },[productToEdit]);
-
     
     const handleChange = e => {
         setNewProduct({
             ...newProduct,
             [e.target.name]: e.target.value
         })
-    }
+    };
     
 
     const handleSubmit = e => {
         e.preventDefault();
-        if (name.trim() === '' || price.trim() === '') {
-            dispatch(showAlert('All fields are required.'));
-            return;
-        }
+
+        if (!name.trim() || !price.trim()) return dispatch(showAlert('All fields are required.'));
+        
         dispatch(hideAlert());
-        if(productToEdit) {
-            dispatch(editProductAction({
-                ...newProduct,
-                id: productToEdit.id
-            }));
-        } else {
-            dispatch(createProductAction(newProduct));
-        }
+
+        productToEdit && dispatch(editProductAction({ ...newProduct, id: productToEdit.id }));
+        !productToEdit && dispatch(createProductAction(newProduct));
+        
         navigate('/');
     }
 

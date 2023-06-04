@@ -19,7 +19,7 @@ const Header = () => {
                 <Link to='/'><h3>CRUD - React, Redux, REST API and axios.</h3></Link>
                 <button
                     onClick={handleClick}
-                    className='btn btn-danger  nuevo-post d-block d-dm-inline-block'
+                    className='btn btn-danger new-post d-block d-dm-inline-block'
                 >Add Product &#43;</button>
             </div>
         </nav>
